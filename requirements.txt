@@ -1,0 +1,9 @@
+sphinx
+sphinx_rtd_theme
+sphinxcontrib-actdiag
+sphinxcontrib-blockdiag
+sphinxcontrib-nwdiag
+sphinxcontrib-seqdiag
+sphinx_markdown_tables
+myst_parser
+
