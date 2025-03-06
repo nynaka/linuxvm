@@ -1,0 +1,14 @@
+image: python:3.12.7
+pages:
+  stage: deploy
+  script:
+    - pip3 install -r requirements.txt
+    - make html
+    - mkdir -p public/
+    - cp -r build/html/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+
