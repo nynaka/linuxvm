@@ -113,20 +113,18 @@ Linux VM
 
     * コマンドオプション
 
-        | オプション   | 説明                                                           |
-        | :----------- | :------------------------------------------------------------- |
-        | --name       | 仮想マシンの名前                                               |
-        | --arch       |                                                                |
-        | --hvm        |                                                                |
-        | --vcpus      | 仮想 CPU の数                                                  |
-        | --ram        | メモリ量（MB）                                                 |
-        | --disk       | ディスクサイズ（GB）                                           |
-        | --os-variant |                                                                |
-        | --network    | network=default: ネットワークの設定                            |
-        | --graphics   |                                                                |
-        | --console    | pty,target_type=serial                                         |
-        | --extra-args | 'console=ttyS0,115200n8'                                       |
-        | --location   | ISO ファイルと、インストーラが格納されているパスに相当する情報 |
+        - --name : 仮想マシンの名前
+        - --arch : CPU のアーキテクチャ
+        - --hvm
+        - --vcpus : 仮想 CPU の数
+        - --ram : メモリ量（MB）
+        - --disk : ディスクサイズ（GB）
+        - --os-variant
+        - --network : network=default: ネットワークの設定
+        - --graphics
+        - --console : pty,target_type=serial
+        - --extra-args : 'console=ttyS0,115200n8'
+        - --location : ISO ファイルと、インストーラが格納されているパスに相当する情報
 
 
 ## BSD

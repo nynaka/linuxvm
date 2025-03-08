@@ -50,12 +50,8 @@ ChatGPT によると、
     virsh console vyos
     ```
 
-    デフォルトのログイン ID / パスワード
+    デフォルトのログイン ID / パスワードはどちらも **vyos** です。
 
-    =========== ====
-    ログイン ID vyos
-    パスワード  vyos
-    =========== ====
 
 4. VyOS のインストール
 
@@ -91,23 +87,23 @@ VyOS ログインして下記の設定をします。
 - NAPT 設定
 - SSH ログイン設定
 
-```bash
-$ configure
-# set interfaces ethernet eth0 address dhcp
-# set interfaces ethernet eth1 address 192.168.123.1/24
+    ```bash
+    $ configure
+    # set interfaces ethernet eth0 address dhcp
+    # set interfaces ethernet eth1 address 192.168.123.1/24
 
-# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 subnet-id 5963
-# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 range 0 start 192.168.123.101
-# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 range 0 stop 192.168.123.200
-# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 option default-router 192.168.123.1
-# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 option name-server 8.8.8.8
+    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 subnet-id 5963
+    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 range 0 start 192.168.123.101
+    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 range 0 stop 192.168.123.200
+    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 option default-router 192.168.123.1
+    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 option name-server 8.8.8.8
 
-# set nat source rule 1 translation address masquerade
-# set nat source rule 1 outbound-interface name eth0
-# set nat source rule 1 source address 192.168.123.0/24
+    # set nat source rule 1 translation address masquerade
+    # set nat source rule 1 outbound-interface name eth0
+    # set nat source rule 1 source address 192.168.123.0/24
 
-# set service ssh
+    # set service ssh
 
-# commit
-# save
-```
+    # commit
+    # save
+    ```
