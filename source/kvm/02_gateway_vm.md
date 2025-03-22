@@ -10,8 +10,8 @@ ChatGPT によると、
 > VyOSは、オープンソースのネットワーク仮想化プラットフォームであり、ルーティング、ファイアウォール、VPNなどの機能を提供します。柔軟性に富み、堅牢なセキュリティを備え、ネットワークの設定と管理を効率化します。VyOSは、小規模なオフィスから大規模なデータセンターまで、さまざまな環境で使用されています。
 
 とのことです。  
-業務用ルータやスイッチを扱ったことがある人にとっては、ソフトウェア版のルータ or スイッチといわれた方が、イメージできると思います。  
-使い勝手としては、Cisco IOS よりも、20年くらい前の 日立／AlaxalA ルータ？ と思わせるような感じの CLI のような印象を受けました。
+業務用ルータやスイッチを扱ったことがある人にとっては、ソフトウェア版のルータ or L3 スイッチといわれた方が、イメージできると思います。  
+使い勝手としては、Cisco IOS よりも、20年くらい前の 日立／AlaxalA ルータ？ と思わせるような感じの CLI のような印象です。
 
 ## インストール
 
@@ -19,8 +19,8 @@ ChatGPT によると、
 
     ```bash
     wget \
-        https://github.com/vyos/vyos-rolling-nightly-builds/releases/download/1.5-rolling-202407060019/vyos-1.5-rolling-202407060019-amd64.iso \
-        -O /tmp/vyos-1.5-rolling-202407060019-amd64.iso
+        https://github.com/vyos/vyos-nightly-build/releases/download/2025.03.18-0018-rolling/vyos-2025.03.18-0018-rolling-generic-amd64.iso \
+        -O /tmp/vyos-2025.03.18-0018-rolling-generic-amd64.iso
     ```
 
 2. VyOS の起動
@@ -38,7 +38,7 @@ ChatGPT によると、
         --network bridge=virbr1,model=virtio \
         --graphics none \
         --console pty,target_type=serial \
-        --cdrom=/tmp/vyos-1.5-rolling-202407060019-amd64.iso
+        --cdrom=/tmp/vyos-2025.03.18-0018-rolling-generic-amd64.iso
     ```
 
 3. VyOS に接続
@@ -87,23 +87,25 @@ VyOS ログインして下記の設定をします。
 - NAPT 設定
 - SSH ログイン設定
 
-    ```bash
-    $ configure
-    # set interfaces ethernet eth0 address dhcp
-    # set interfaces ethernet eth1 address 192.168.123.1/24
+### 設定例
 
-    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 subnet-id 5963
-    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 range 0 start 192.168.123.101
-    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 range 0 stop 192.168.123.200
-    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 option default-router 192.168.123.1
-    # set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 option name-server 8.8.8.8
+```bash
+$ configure
+# set interfaces ethernet eth0 address dhcp
+# set interfaces ethernet eth1 address 192.168.123.1/24
 
-    # set nat source rule 1 translation address masquerade
-    # set nat source rule 1 outbound-interface name eth0
-    # set nat source rule 1 source address 192.168.123.0/24
+# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 subnet-id 5963
+# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 range 0 start 192.168.123.101
+# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 range 0 stop 192.168.123.200
+# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 option default-router 192.168.123.1
+# set service dhcp-server shared-network-name dhcp_eth1 subnet 192.168.123.0/24 option name-server 8.8.8.8
 
-    # set service ssh
+# set nat source rule 1 translation address masquerade
+# set nat source rule 1 outbound-interface name eth0
+# set nat source rule 1 source address 192.168.123.0/24
 
-    # commit
-    # save
-    ```
+# set service ssh
+
+# commit
+# save
+```

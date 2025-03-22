@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Virtual Machine Memo
-====================
+Linux Virtual Machine
+=====================
 
 .. toctree::
    :maxdepth: 2
@@ -13,12 +13,6 @@ Virtual Machine Memo
    ./kvm/01_prepare
    ./kvm/02_gateway_vm
    ./kvm/03_linux_vm
+   ./kvm/03_bsd_vm
+   ./kvm/03_windows_vm
    ./kvm/04_vm_operation
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
