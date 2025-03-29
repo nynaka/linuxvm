@@ -8,6 +8,12 @@ Linux Virtual Machine
 
 .. toctree::
    :maxdepth: 2
+   :caption: Linuxコンテナ:
+
+   ./lxc
+
+.. toctree::
+   :maxdepth: 2
    :caption: KVM:
 
    ./kvm/01_prepare
